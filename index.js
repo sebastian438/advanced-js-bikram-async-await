@@ -61,6 +61,10 @@ const printImageAndName = (name, sprites) => {
         fragment.append(tituloPokemon);
         sectionPokemon.append(fragment);
 
+        let imagen = sprites.front_default;
+        let name = name;
+        return `<section><img src= ${imagen} alt= ${name}><h1>${name}</h1></section>`
+
 
     } catch (error) {
 
@@ -126,12 +130,13 @@ const getRandomPokemonImage = async () => {
 
 //EJERCICIO 07
 
-const ranmdomNumero07 = Math.floor(Math.random() * 826);
+
 
 const urlBase07 = "https://rickandmortyapi.com/api/character"
 
 const getRandomCharacter = async () => {
     try {
+        const ranmdomNumero07 = Math.floor(Math.random() * 826);
         const response = await fetch(`${urlBase07}/${ranmdomNumero07}`)
         let data;
         if (response.ok) {
@@ -148,20 +153,21 @@ const getRandomCharacter = async () => {
 
 //EJERCICIO 08
 
-const numeroRandom08 = Math.floor(Math.random() * 826);
+
 
 const urlBase08 = "https://rickandmortyapi.com/api/character"
 
 const getRandomCharacterInfo = async () => {
     try {
+        const numeroRandom08 = Math.floor(Math.random() * 826);
         const response = await fetch(`${urlBase08}/${numeroRandom08}`);
 
         let data;
         let imgCaracter;
         let name;
         let episode;
-        let firstEpisodeName;
-        let air_date;
+        let firstEpisode;
+        let dateEpisode;
         let data01;
         if (response.ok) {
             data = await response.json();
@@ -174,13 +180,13 @@ const getRandomCharacterInfo = async () => {
         const responseEpisode = await fetch(episode[0]);
         if (response.ok) {
             data01 = await responseEpisode.json();
-            firstEpisodeName = data01.name;
-            air_date = data01.air_date;
+            firstEpisode = data01.name;
+            dateEpisode = data01.air_date;
         } else {
             throw ("Error con la data01")
         }
 
-        return { imgCaracter, name, episode, firstEpisodeName, air_date };
+        return { imgCaracter, name, episode, firstEpisode, dateEpisode };
 
 
     } catch (error) {
