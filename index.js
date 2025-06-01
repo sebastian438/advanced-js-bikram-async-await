@@ -27,6 +27,7 @@ const getRandomPokemon = async () => {
 
 //EJERCICIO 03
 
+const ranmdomNumero03 = Math.floor(Math.random() * 1025);
 const sectionPokemon = document.querySelector("#sectionPokemon");
 const fragment = document.createDocumentFragment();
 
@@ -66,13 +67,13 @@ const printImageAndName = (name, sprites) => {
     }
 }
 
-const getData = async (numberForm) => {
-    const { name, sprites } = await llamarApi(`/pokemon-form/${numberForm}/`);
+const getData = async () => {
+    const { name, sprites } = await llamarApi(`/pokemon-form/${ranmdomNumero03}/`);
     console.log(name, sprites);
     printImageAndName(name, sprites);
 }
 
-getData("6");
+getData();
 // llamarApi("1/");
 
 
